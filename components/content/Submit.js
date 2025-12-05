@@ -10,7 +10,6 @@ import {
 import { Button } from "@/components/ui/button";
 import dc from "@/lib/DataConfig";
 import { Send } from "lucide-react";
-import { sendEmail } from "@/app/actions";
 
 const Submit = ({
   setShowLetter,
@@ -62,7 +61,7 @@ const Submit = ({
     }
 
     //email về email
-    if (!onDevelopmentEnv) {
+    // if (!onDevelopmentEnv) { // ENABLED FOR TESTING
       const emailData = {
         name: data.name,
         myself: dc.myself,
@@ -78,15 +77,30 @@ const Submit = ({
         point: data.handsome,
       };
 
-      const result = await sendEmail(emailData);
-      
-      if (!result.success) {
-        console.error("Failed to send email:", result.error);
-        alert("Có lỗi xảy ra khi gửi thư. Vui lòng thử lại sau.");
+      try {
+        const response = await fetch('/api/email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(emailData),
+        });
+        
+        const result = await response.json();
+        
+        if (!result.success) {
+          console.error("Failed to send email:", result.error);
+          alert("Có lỗi xảy ra khi gửi thư. Vui lòng thử lại sau.");
+          setIsSubmitting(false);
+          return;
+        }
+      } catch (error) {
+        console.error("Network error:", error);
+        alert("Có lỗi kết nối. Vui lòng thử lại sau.");
         setIsSubmitting(false);
         return;
       }
-    }
+    // }
     
     //Ẩn form và hiện kết quả (chỉ khi thành công hoặc dev env)
     setShow(false);
@@ -100,8 +114,8 @@ const Submit = ({
   if (!available || !data.message) return null;
 
   return (
-    <div className="submit-container w-full animate-accordion-down">
-      <Card className="glass border-white/20">
+    <div className="w-full">
+      <Card>
         <CardHeader>
           <CardTitle className="text-xl font-bold">{dc.submit.title}</CardTitle>
           <CardDescription>{dc.submit.subheader}</CardDescription>
@@ -110,11 +124,11 @@ const Submit = ({
              <img 
                src={dc.submit.image} 
                alt="Submit" 
-               className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
+               className="w-full h-full object-cover"
              />
         </div>
         <CardContent className="pt-6">
-          <p className="text-foreground/90 leading-relaxed mb-4">
+          <p className="text-muted-foreground leading-relaxed mb-4">
             {dc.submit.content}
             <br />
             <br />
@@ -123,7 +137,7 @@ const Submit = ({
         </CardContent>
         <CardFooter className="flex gap-4 justify-end">
           <Button 
-            variant="ghost" 
+            variant="outline" 
             onClick={()=>{window.scrollTo({ top: 750, behavior: "smooth" })}}
             disabled={isSubmitting}
           >
@@ -132,7 +146,6 @@ const Submit = ({
           <Button 
             onClick={() => handleSubmit()}
             disabled={isSubmitting}
-            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg shadow-blue-500/20"
           >
             <Send className="w-4 h-4 mr-2" />
             {isSubmitting ? "Đang gửi..." : dc.submit.button}
@@ -144,5 +157,6 @@ const Submit = ({
 };
 
 export default Submit;
+
 
 

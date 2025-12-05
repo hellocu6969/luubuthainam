@@ -52,10 +52,10 @@ function GuestbookApp() {
   }, [onDevelopmentEnv]);
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-900 dark:to-slate-800 transition-colors duration-500">
-      <div className="container mx-auto px-4 py-8 max-w-3xl">
-        <Header />
-
+    <div className="min-h-screen w-full bg-background transition-colors duration-500">
+      <Header />
+      <div className="container mx-auto px-4 py-8 max-w-3xl space-y-8">
+        <WarnBeforeUnload />
 
         <HeadCard
           show={show}
@@ -72,36 +72,38 @@ function GuestbookApp() {
 
         <Letter show={show} data={data} showLetter={showLetter} />
 
-        <NameInput
-          show={show}
-          setData={setData}
-          data={data}
-        />
+        <div className="grid gap-6">
+          <NameInput
+            show={show}
+            setData={setData}
+            data={data}
+          />
 
-        <AboutMe
-          available={available}
-          show={show}
-          setData={setData}
-          data={data}
-        />
+          <AboutMe
+            available={available}
+            show={show}
+            setData={setData}
+            data={data}
+          />
 
-        <MultipleChoice
-          available={available}
-          setData={setData}
-          data={data}
-        />
+          <MultipleChoice
+            available={available}
+            setData={setData}
+            data={data}
+          />
 
-        <Form
-          available={available}
-          setData={setData}
-          data={data}
-        />
+          <Form
+            available={available}
+            setData={setData}
+            data={data}
+          />
 
-        <ShortText
-          available={available}
-          setData={setData}
-          data={data}
-        />
+          <ShortText
+            available={available}
+            setData={setData}
+            data={data}
+          />
+        </div>
 
         <Submit
           setShowLetter={setShowLetter}
@@ -115,6 +117,10 @@ function GuestbookApp() {
         />
         {(data.name || data.about || data.message || data.memories) &&
           available && <WarnBeforeUnload />}
+
+        <div className="text-center text-sm text-muted-foreground pt-8 pb-4">
+          <p>© {new Date().getFullYear()} {dc.myself}. All rights reserved.</p>
+        </div>
       </div>
     </div>
   );

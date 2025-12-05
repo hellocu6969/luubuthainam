@@ -22,7 +22,7 @@ const Thanks = ({ show, data, available }) => {
           <img
             src="https://www.macmillandictionary.com/external/slideshow/thumb/Grey_thumb.png"
             alt="Tớ ngồi code sml"
-            className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
+            className="w-full h-full object-cover transition-transform duration-500"
           />
         </div>
         <CardFooter className="flex gap-3 pt-4 justify-center">

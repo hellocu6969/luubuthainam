@@ -1,4 +1,4 @@
 {
-  "/_not-found": "app/_not-found.js",
+  "/api/email/route": "app/api/email/route.js",
   "/page": "app/page.js"
 }

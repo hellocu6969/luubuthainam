@@ -13,25 +13,25 @@ const ShortText = ({ setData, data, available }) => {
   if (!available || !data.memories) return null;
 
   return (
-    <div className="shortText-container w-full mb-8 animate-accordion-down">
-      <Card className="glass border-white/20">
+    <div className="w-full">
+      <Card>
         <CardHeader>
           <CardTitle className="text-xl font-bold">{dc.message.title}</CardTitle>
           <CardDescription>{dc.message.subtitle}</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="w-full md:w-[90%]">
+          <div className="w-full">
             <Textarea
-              className={`bg-white/5 border-white/10 focus:border-blue-400/50 min-h-[100px] transition-all ${
-                data.message.length < 5 && data.message.length !== 0 ? "border-red-500/50 focus:border-red-500" : ""
+              className={`min-h-[100px] ${
+                data.message.length < 5 && data.message.length !== 0 ? "border-destructive" : ""
               }`}
               placeholder={dc.message.placeholder}
               value={data.message}
               onChange={(e) => setData({ ...data, message: e.target.value })}
             />
             {data.message.length < 5 && data.message.length !== 0 && (
-              <p className="text-sm text-red-400 mt-1 ml-1 animate-in slide-in-from-top-1 fade-in duration-200">
-                {dc.message.messageError}
+              <p className="text-sm text-destructive mt-1 ml-1 animate-in slide-in-from-top-1 fade-in duration-200">
+                {dc.message.nameError}
               </p>
             )}
           </div>

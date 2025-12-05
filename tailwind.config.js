@@ -52,12 +52,6 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Liquid Glass Tokens
-        surface: "var(--bg-surface)",
-        subtle: "var(--bg-subtle)",
-        elevated: "var(--bg-elevated)",
-        "glass-tint": "var(--glass-tint)",
-        "glass-frost": "var(--glass-frost)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -78,36 +72,7 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-      backdropBlur: {
-        xs: '2px',
-      }
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    plugin(function({ addUtilities }) {
-      addUtilities({
-        '.glass': {
-          'background': 'var(--glass-tint)',
-          'backdrop-filter': 'blur(var(--blur-md))',
-          'border': '1px solid var(--glass-frost)',
-          'box-shadow': 'var(--shadow-soft)',
-        },
-        '.glass-strong': {
-          'background': 'var(--bg-elevated)',
-          'backdrop-filter': 'blur(var(--blur-lg))',
-          'border': '1px solid var(--border-default)',
-          'box-shadow': 'var(--shadow-deep)',
-        },
-        '.glass-subtle': {
-          'background': 'var(--bg-subtle)',
-          'backdrop-filter': 'blur(var(--blur-sm))',
-          'border': '1px solid transparent',
-        },
-        '.text-shadow-sm': {
-          'text-shadow': '0 1px 2px rgba(0,0,0,0.1)',
-        },
-      })
-    })
-  ],
+  plugins: [require("tailwindcss-animate")],
 }

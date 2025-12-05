@@ -20,27 +20,23 @@ const MultipleChoice = ({ setData, data, available }) => {
   ];
 
   return (
-    <div className="multipleChoice-container w-full mb-8 animate-accordion-down">
-      <Card className="glass border-white/20">
+    <div className="w-full">
+      <Card>
         <CardHeader>
           <CardTitle className="text-xl font-bold">{dc.handsome.title}</CardTitle>
           <CardDescription>{dc.handsome.subtitle}</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="w-full md:w-[90%] px-3 py-6">
+          <div className="py-6 px-2">
             <Slider
               defaultValue={[40]}
               max={100}
-              step={10}
-              className="w-full"
-              onValueChange={(value) => setData({ ...data, handsome: value[0] })}
+              step={20}
+              onValueChange={(val) => setData({ ...data, handsome: val[0] })}
             />
-            <div className="flex justify-between mt-4 text-xs text-muted-foreground">
-              {marks.map((mark) => (
-                <span key={mark.value} className="text-center w-16">
-                  {mark.label}
-                </span>
-              ))}
+            <div className="flex justify-between mt-4 text-sm text-muted-foreground font-medium">
+              <span>{dc.handsome.label.one}</span>
+              <span>{dc.handsome.label.full}</span>
             </div>
           </div>
         </CardContent>

@@ -56,7 +56,7 @@ const Letter = ({ show, data, showLetter }) => {
           <img
             src="https://wallpapers.com/images/featured/vmdj9lfm2un8rji3.jpg"
             alt="Klee"
-            className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
+            className="w-full h-full object-cover transition-transform duration-500"
           />
         </div>
       </Card>

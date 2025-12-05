@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Play, Pause, RotateCcw, ExternalLink } from "lucide-react";
 
 const Nhac = "/nhac.mp3";
+const trackUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; // Placeholder
 
 const useAudio = url => {
   const [audio] = useState(typeof Audio !== "undefined" ? new Audio(url) : null);
@@ -44,55 +45,46 @@ const MusicPlayer = () => {
   const [playing, toggle, replay] = useAudio(Nhac);
 
   return (
-    <div className="music-container w-full mb-8 animate-accordion-down">
-      <Card className="glass border-white/20 flex flex-col md:flex-row overflow-hidden">
-        <div className="w-full md:w-[250px] aspect-square relative group">
+    <Card className="mb-6 overflow-hidden">
+      <div className="flex items-center gap-4 p-4">
+        <div className="relative w-20 h-20 rounded-md overflow-hidden flex-shrink-0 bg-muted">
           <img
             src="https://www.macmillandictionary.com/external/slideshow/thumb/Grey_thumb.png"
             alt="Music Cover"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
             <Button
               size="icon"
-              variant="ghost"
-              className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white"
+              variant="secondary"
+              className="h-8 w-8 rounded-full bg-white/90 hover:bg-white text-black shadow-sm"
               onClick={toggle}
             >
-              {playing ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
+              {playing ? (
+                <Pause className="h-4 w-4" />
+              ) : (
+                <Play className="h-4 w-4 ml-0.5" />
+              )}
             </Button>
           </div>
         </div>
         
-        <div className="flex-1 flex flex-col justify-center p-6">
-          <CardContent className="p-0 space-y-4">
-            <div>
-              <h3 className="text-2xl font-bold">Cá hồi (Hoang)</h3>
-              <p className="text-muted-foreground">Ngọt band</p>
-            </div>
-            
-            <p className="text-sm text-muted-foreground italic">
-              Thay nhạc của cậu vào đây này
-            </p>
-            
-            <div className="flex gap-3 pt-2">
-              <Button variant="outline" onClick={replay} className="border-white/20 hover:bg-white/10">
-                <RotateCcw className="w-4 h-4 mr-2" />
-                Replay
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center justify-between mb-1">
+            <h3 className="font-semibold truncate pr-2">Lưu bút ngày xanh</h3>
+            <div className="flex gap-1">
+              <Button size="icon" variant="ghost" className="h-8 w-8" onClick={replay}>
+                <RotateCcw className="h-4 w-4" />
               </Button>
-              <Button 
-                variant="outline" 
-                className="border-green-500/30 text-green-600 hover:bg-green-500/10 hover:text-green-700"
-                onClick={() => window.open("play list của cậu", "_blank")}
-              >
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Playlist
+              <Button size="icon" variant="ghost" className="h-8 w-8" onClick={() => window.open(trackUrl, "_blank")}>
+                <ExternalLink className="h-4 w-4" />
               </Button>
             </div>
-          </CardContent>
+          </div>
+          <p className="text-sm text-muted-foreground truncate">Unknown Artist</p>
         </div>
-      </Card>
-    </div>
+      </div>
+    </Card>
   );
 };
 
