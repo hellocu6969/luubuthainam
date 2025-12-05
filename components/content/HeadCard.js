@@ -27,13 +27,13 @@ const HeadCard = () => {
       <div className="max-w-xl mx-auto space-y-8 px-4 text-center">
         <div 
           onClick={() => window.open("https://www.facebook.com/yun.khngn/", "_blank")}
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-white transition-colors cursor-pointer border-b border-white/10 pb-1"
+          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer border-b border-border pb-1"
         >
           <ExternalLink className="w-3.5 h-3.5" />
           <span className="text-sm tracking-wide">Created by {dc.myself}</span>
         </div>
 
-        <div className="space-y-6 text-lg text-zinc-300 leading-relaxed font-light">
+        <div className="space-y-6 text-lg text-muted-foreground leading-relaxed font-light">
           <p>{dc.headCard.content}</p>
           <p>{dc.headCard.content2}</p>
         </div>
@@ -41,14 +41,14 @@ const HeadCard = () => {
         <div className="flex gap-6 justify-center pt-8">
           <Button 
             onClick={() => router.push('/write')} 
-            className="rounded-full px-8 py-6 text-base font-medium transition-all duration-500 hover:scale-105 bg-white text-black hover:bg-zinc-200"
+            className="rounded-full px-8 py-6 text-base font-medium transition-all duration-500 hover:scale-105 shadow-lg"
           >
             {dc.headCard.button1}
           </Button>
           <Button 
             variant="ghost" 
             onClick={() => router.push('/letter')} 
-            className="rounded-full px-8 py-6 text-base font-medium text-zinc-400 hover:text-white hover:bg-white/5"
+            className="rounded-full px-8 py-6 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
           >
             {dc.headCard.button2}
           </Button>
