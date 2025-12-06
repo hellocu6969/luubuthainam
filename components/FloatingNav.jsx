@@ -14,7 +14,7 @@ const FloatingNav = () => {
 
     return (
         <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="flex flex-col gap-2 p-2 bg-zinc-900/90 backdrop-blur-md border border-white/10 rounded-full shadow-2xl">
+            <div className="flex flex-col gap-2 p-2 bg-background/80 backdrop-blur-md border border-border rounded-full shadow-2xl">
                 <NavButton
                     active={pathname === "/"}
                     onClick={() => router.push("/")}
@@ -34,13 +34,13 @@ const FloatingNav = () => {
                     label="Letter"
                 />
 
-                <div className="h-px w-8 bg-white/10 mx-auto my-1" />
+                <div className="h-px w-8 bg-border mx-auto my-1" />
 
                 <Button
                     variant="ghost"
                     size="icon"
                     onClick={toggleTheme}
-                    className="rounded-full w-10 h-10 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
+                    className="rounded-full w-10 h-10 hover:bg-accent hover:text-accent-foreground text-muted-foreground transition-colors"
                 >
                     {theme === "dark" ? (
                         <Sun className="h-5 w-5" />
@@ -61,8 +61,8 @@ const NavButton = ({ active, onClick, icon, label }) => (
         className={cn(
             "rounded-full w-10 h-10 transition-colors",
             active
-                ? "bg-white text-black hover:bg-zinc-200"
-                : "text-zinc-400 hover:text-white hover:bg-white/10"
+                ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
         )}
         title={label}
     >

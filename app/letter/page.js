@@ -18,7 +18,7 @@ export default function LetterPage() {
   
   if (!data || !data.name) {
      return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-background text-white p-4 text-center">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground p-4 text-center">
             <h1 className="text-2xl font-serif mb-4">Chưa có lá thư nào được viết</h1>
             <Button onClick={() => router.push('/')} variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Quay về trang chủ
@@ -37,7 +37,7 @@ export default function LetterPage() {
         <Letter show={false} data={data} showLetter={true} />
 
         <div className="flex justify-center pt-8">
-             <Button onClick={() => router.push('/')} variant="ghost" className="text-zinc-500 hover:text-white">
+             <Button onClick={() => router.push('/')} variant="ghost" className="text-muted-foreground hover:text-foreground">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Quay về trang chủ
             </Button>
         </div>

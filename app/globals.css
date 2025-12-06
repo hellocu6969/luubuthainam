@@ -99,20 +99,20 @@
 
 /* Tiptap Editor Styles */
 .ProseMirror {
-  @apply min-h-[150px] outline-none text-zinc-300 leading-relaxed text-lg max-w-none;
+  @apply min-h-[150px] outline-none text-foreground leading-relaxed text-lg max-w-none;
 }
 
 .ProseMirror p.is-editor-empty:first-child::before {
   content: attr(data-placeholder);
-  @apply text-zinc-600 float-left h-0 pointer-events-none;
+  @apply text-muted-foreground float-left h-0 pointer-events-none;
 }
 
 .ProseMirror h1 {
-  @apply text-3xl font-serif font-bold mb-4 text-white mt-6;
+  @apply text-3xl font-serif font-bold mb-4 text-foreground mt-6;
 }
 
 .ProseMirror h2 {
-  @apply text-2xl font-serif font-bold mb-3 text-white mt-6;
+  @apply text-2xl font-serif font-bold mb-3 text-foreground mt-6;
 }
 
 .ProseMirror p {
@@ -120,7 +120,7 @@
 }
 
 .ProseMirror blockquote {
-  @apply border-l-4 border-zinc-700 pl-4 py-1 italic text-zinc-400 my-4;
+  @apply border-l-4 border-border pl-4 py-1 italic text-muted-foreground my-4;
 }
 
 .ProseMirror ul {
@@ -132,5 +132,5 @@
 }
 
 .ProseMirror strong {
-  @apply text-white font-bold;
+  @apply text-foreground font-bold;
 }

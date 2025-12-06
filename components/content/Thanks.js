@@ -12,8 +12,8 @@ const Thanks = ({ show, data, available }) => {
 
   return (
     <div className="thanks-container w-full mb-8 animate-accordion-down">
-      <Card className="glass border-white/20 overflow-hidden">
-        <CardContent className="pt-6 pb-6 border-b border-white/10">
+      <Card className="bg-card text-card-foreground border-border overflow-hidden shadow-sm">
+        <CardContent className="pt-6 pb-6 border-b border-border">
           <p className="text-lg italic text-center">
             Cảm ơn {data.name} đã gửi thư cho tớ
           </p>
@@ -29,7 +29,7 @@ const Thanks = ({ show, data, available }) => {
           <Button 
             variant="outline" 
             onClick={() => window.open("link cua cau", "_blank")}
-            className="border-blue-500/30 hover:bg-blue-500/10 hover:text-blue-400"
+            className="hover:bg-accent"
           >
             <ExternalLink className="w-4 h-4 mr-2" />
             Direct của tớ
@@ -37,7 +37,7 @@ const Thanks = ({ show, data, available }) => {
           <Button 
             variant="outline" 
             onClick={() => window.open("cai gi do", "_blank")}
-            className="border-purple-500/30 hover:bg-purple-500/10 hover:text-purple-400"
+            className="hover:bg-accent"
           >
             <Music className="w-4 h-4 mr-2" />
             Playlist của tớ nè

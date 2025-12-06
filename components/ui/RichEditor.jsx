@@ -84,7 +84,7 @@ const RichEditor = ({ content, onChange, placeholder = "Write your story..." }) 
         content: content,
         editorProps: {
             attributes: {
-                class: 'prose dark:prose-invert max-w-none focus:outline-none min-h-[150px] px-2',
+                class: 'prose dark:prose-invert max-w-none focus:outline-none min-h-[150px] px-2 text-foreground prose-p:text-foreground prose-headings:text-foreground prose-strong:text-foreground prose-li:text-foreground',
             },
         },
         onUpdate: ({ editor }) => {

@@ -10,55 +10,32 @@ const Letter = ({ show, data, showLetter }) => {
 
   return (
     <div className="letter-container w-full mb-8 animate-accordion-down">
-      <Card className="glass border-white/20 overflow-hidden">
-        <CardContent className="pt-6 pb-6">
-          <div className="prose prose-sm dark:prose-invert max-w-none italic leading-relaxed space-y-4">
-            <p>
-              Ngày {data.date.day} tháng {data.date.month} năm {data.date.year}
-              <br />
-              {data.date.hour} giờ {data.date.minute} phút.
-            </p>
+      <Card className="border-border bg-card overflow-hidden shadow-sm">
+        <CardContent className="pt-12 pb-12 px-8 md:px-12">
+           <div className="text-center mb-12 border-b border-border pb-8">
+               <p className="text-xs font-medium tracking-widest text-muted-foreground uppercase mb-4">
+                   {data.date.day}/{data.date.month}/{data.date.year} • {data.date.hour}:{data.date.minute}
+               </p>
+               <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4 leading-tight text-foreground">
+                   {data.title || "Lưu bút không tên"}
+               </h1>
+               <div className="flex flex-col items-center justify-center mt-6 text-foreground">
+                   <span className="font-medium text-lg">{data.name}</span>
+                   <span className="text-sm text-muted-foreground">{data.role}</span>
+               </div>
+           </div>
 
-            <p>Gửi {dc.myself}</p>
+           <div className="prose dark:prose-invert max-w-none leading-relaxed text-foreground mx-auto">
+               <div dangerouslySetInnerHTML={{ __html: data.message }} />
+           </div>
 
-            <p>
-              Qua những lần gặp gỡ, ít nhiều, hoặc là tớ chỉ mới quen cậu được vài hôm thui. 
-              Tớ chấm cậu được {data.handsome} điểm đó. Mà thôi, cảm nhận của tớ về cậu này:
-              <br />
-              {data.about}
-            </p>
-
-            <p>
-              Mấy năm học cấp ba đã kết thúc, tớ chẳng biết nói gì nữa, thôi thì ngồi ôn lại những gì đã từng là kỉ niệm. 
-              Kỉ niệm của chúng ta là đây:
-              <br />
-              {data.memories}
-            </p>
-
-            <p>
-              Chà, chúng thật đáng nhớ đúng không, tớ cũng muốn nhắn cậu rằng:
-              <br />
-              {data.message}
-            </p>
-
-            <p>
-              Hết rùi nè, chắc tớ cũng k viết gì nữa, hi vọng là nó k lỗi để tớ còn gửi được =)))).
-            </p>
-
-            <p>
-              Kí tên
-              <br />
-              {data.name}.
-            </p>
-          </div>
+           <div className="mt-12 pt-8 border-t border-border text-center">
+               <p className="text-sm text-muted-foreground italic">
+                   Gửi tới {dc.myself}
+               </p>
+           </div>
         </CardContent>
-        <div className="relative w-full h-64 overflow-hidden">
-          <img
-            src="https://wallpapers.com/images/featured/vmdj9lfm2un8rji3.jpg"
-            alt="Klee"
-            className="w-full h-full object-cover transition-transform duration-500"
-          />
-        </div>
+        {/* Optional Image footer if desired, or remove */}
       </Card>
     </div>
   );
